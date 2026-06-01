@@ -190,7 +190,54 @@
   @keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
 
-  @media (max-width: 640px) { nav { padding: 1rem; } .nav-links { gap: 0.75rem; } .nav-links a { font-size: 0.6rem; } }
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0.25rem;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--lila);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: rgba(13,10,20,0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding: 1rem 0;
+      z-index: 49;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { width: 100%; text-align: center; }
+    .nav-links a {
+      display: block;
+      padding: 0.9rem 2rem;
+      font-size: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .lang-btn { margin: 0.75rem auto 0.25rem; }
+    nav { padding: 1rem 1.5rem; }
+  }
 </style>
 </head>
 <body>
@@ -202,7 +249,10 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">Celena B. Gómez</a>
-  <ul class="nav-links">
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#sobre-mi" data-i18n="nav_about">Sobre mí</a></li>
     <li><a href="#proyectos" data-i18n="nav_projects">Proyectos</a></li>
     <li><a href="#habilidades" data-i18n="nav_skills">Habilidades</a></li>
@@ -509,6 +559,22 @@
 </footer>
 
 <script>
+  // Hamburger menu
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    const btn = document.getElementById('hamburger');
+    nav.classList.toggle('open');
+    btn.classList.toggle('open');
+  }
+
+  // Close menu when clicking a nav link
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+    });
+  });
+
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver(entries => {
