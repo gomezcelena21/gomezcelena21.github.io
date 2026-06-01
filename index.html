@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Celena Belén Gómez — Portfolio CV</title>
+<title>Celena Belén Gómez — Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0d0a14;
     --surface: #13101e;
-    --surface2: #1a1528;
     --violet: #a855f7;
     --lila: #c084fc;
     --lila-soft: #e9d5ff;
@@ -17,734 +16,185 @@
     --white: #f5f0ff;
     --muted: #7c6a9a;
     --border: rgba(168,85,247,0.18);
-    --glow: rgba(168,85,247,0.25);
     --display: 'Cormorant Garamond', serif;
     --body: 'Outfit', sans-serif;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--white); font-family: var(--body); font-weight: 300; overflow-x: hidden; }
 
-  body {
-    background: var(--bg);
-    color: var(--white);
-    font-family: var(--body);
-    font-weight: 300;
-    overflow-x: hidden;
-  }
-
-  /* Ambient background blobs */
-  .blob {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.12;
-    pointer-events: none;
-    z-index: 0;
-  }
+  .blob { position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.12; pointer-events: none; z-index: 0; }
   .blob-1 { width: 500px; height: 500px; background: #7c3aed; top: -100px; right: -100px; }
   .blob-2 { width: 400px; height: 400px; background: #a855f7; bottom: 200px; left: -150px; }
   .blob-3 { width: 300px; height: 300px; background: #ec4899; top: 50%; right: 10%; }
 
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-    z-index: 1;
-  }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
 
-  /* ── NAV ── */
+  /* NAV */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 50;
-    padding: 1.2rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(13,10,20,0.7);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center;
+    background: rgba(13,10,20,0.7); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
   }
-
-  .nav-logo {
-    font-family: var(--display);
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--lila-soft);
-    letter-spacing: 0.05em;
-    text-decoration: none;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 0.78rem;
-    font-weight: 400;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.25s;
-  }
+  .nav-logo { font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--lila-soft); letter-spacing: 0.05em; text-decoration: none; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+  .nav-links a { font-size: 0.78rem; font-weight: 400; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.25s; }
   .nav-links a:hover { color: var(--lila); }
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 8rem 0 5rem;
-    position: relative;
+  .lang-btn {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em;
+    padding: 0.35rem 0.9rem; border: 1px solid var(--border); background: transparent;
+    color: var(--lila); cursor: pointer; font-family: var(--body); border-radius: 2px;
+    transition: all 0.25s;
   }
+  .lang-btn:hover { background: rgba(168,85,247,0.1); border-color: var(--lila); }
 
-  .hero-inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 4rem;
-    align-items: center;
-    width: 100%;
-  }
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 0 5rem; position: relative; }
+  .hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; width: 100%; }
+  @media (max-width: 640px) { .hero-inner { grid-template-columns: 1fr; } .hero-avatar { display: none; } }
 
-  @media (max-width: 640px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-avatar { display: none; }
-  }
+  .hero-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--violet); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.75rem; opacity: 0; animation: rise 0.8s 0.1s ease forwards; }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--violet); box-shadow: 0 0 8px var(--violet); }
 
-  .hero-eyebrow {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--violet);
-    margin-bottom: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    opacity: 0;
-    animation: rise 0.8s 0.1s ease forwards;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 32px; height: 1px;
-    background: var(--violet);
-    box-shadow: 0 0 8px var(--violet);
-  }
+  .hero-name { font-family: var(--display); font-weight: 300; font-size: clamp(3.2rem, 8vw, 6.5rem); line-height: 1; margin-bottom: 0.5rem; color: var(--white); opacity: 0; animation: rise 0.8s 0.2s ease forwards; }
+  .hero-name em { font-style: italic; color: var(--lila); display: block; text-shadow: 0 0 60px rgba(192,132,252,0.4); }
 
-  .hero-name {
-    font-family: var(--display);
-    font-weight: 300;
-    font-size: clamp(3.2rem, 8vw, 6.5rem);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-    color: var(--white);
-    opacity: 0;
-    animation: rise 0.8s 0.2s ease forwards;
-  }
+  .hero-subtitle { font-size: 0.8rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 2.5rem; opacity: 0; animation: rise 0.8s 0.3s ease forwards; }
 
-  .hero-name em {
-    font-style: italic;
-    color: var(--lila);
-    display: block;
-    text-shadow: 0 0 60px rgba(192,132,252,0.4);
-  }
+  .hero-bio { font-size: 1rem; line-height: 1.85; color: rgba(245,240,255,0.7); max-width: 480px; margin-bottom: 2.5rem; opacity: 0; animation: rise 0.8s 0.4s ease forwards; }
 
-  .hero-subtitle {
-    font-size: 0.8rem;
-    font-weight: 400;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: rise 0.8s 0.3s ease forwards;
-  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: rise 0.8s 0.5s ease forwards; }
 
-  .hero-bio {
-    font-size: 1rem;
-    line-height: 1.85;
-    color: rgba(245,240,255,0.7);
-    max-width: 480px;
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: rise 0.8s 0.4s ease forwards;
-  }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.75rem; font-family: var(--body); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.3s ease; cursor: pointer; border: none; }
+  .btn-primary { background: linear-gradient(135deg, #7c3aed, #a855f7); color: #fff; box-shadow: 0 4px 24px rgba(168,85,247,0.35); }
+  .btn-primary:hover { box-shadow: 0 6px 32px rgba(168,85,247,0.55); transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--lila); border: 1px solid var(--border); }
+  .btn-ghost:hover { background: rgba(168,85,247,0.08); border-color: var(--lila); transform: translateY(-2px); }
 
-  .hero-ctas {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: rise 0.8s 0.5s ease forwards;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.75rem;
-    font-family: var(--body);
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: none;
-  }
-
-  .btn-primary {
-    background: linear-gradient(135deg, #7c3aed, #a855f7);
-    color: #fff;
-    box-shadow: 0 4px 24px rgba(168,85,247,0.35);
-  }
-  .btn-primary:hover {
-    box-shadow: 0 6px 32px rgba(168,85,247,0.55);
-    transform: translateY(-2px);
-  }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--lila);
-    border: 1px solid var(--border);
-  }
-  .btn-ghost:hover {
-    background: rgba(168,85,247,0.08);
-    border-color: var(--lila);
-    transform: translateY(-2px);
-  }
-
-  /* Hero avatar orb */
-  .hero-avatar {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    opacity: 0;
-    animation: rise 1s 0.6s ease forwards;
-  }
-
-  .avatar-ring {
-    position: absolute;
-    inset: -12px;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    animation: spin 20s linear infinite;
-  }
-  .avatar-ring::before {
-    content: '';
-    position: absolute;
-    top: -3px; left: 50%;
-    width: 6px; height: 6px;
-    background: var(--violet);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--violet);
-    transform: translateX(-50%);
-  }
-
-  .avatar-inner {
-    width: 100%; height: 100%;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #1a1528, #2d1f4e);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    box-shadow: 0 0 40px rgba(168,85,247,0.2), inset 0 0 40px rgba(168,85,247,0.05);
-  }
-
-  .avatar-initials {
-    font-family: var(--display);
-    font-size: 3.5rem;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--lila);
-    text-shadow: 0 0 30px rgba(192,132,252,0.5);
-  }
-
+  .hero-avatar { position: relative; width: 200px; height: 200px; opacity: 0; animation: rise 1s 0.6s ease forwards; }
+  .avatar-ring { position: absolute; inset: -12px; border-radius: 50%; border: 1px solid var(--border); animation: spin 20s linear infinite; }
+  .avatar-ring::before { content: ''; position: absolute; top: -3px; left: 50%; width: 6px; height: 6px; background: var(--violet); border-radius: 50%; box-shadow: 0 0 10px var(--violet); transform: translateX(-50%); }
+  .avatar-inner { width: 100%; height: 100%; border-radius: 50%; background: linear-gradient(135deg, #1a1528, #2d1f4e); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 0 40px rgba(168,85,247,0.2); }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* ── SECTION BASE ── */
-  section {
-    padding: 6rem 0;
-    position: relative;
-    z-index: 1;
+  /* SECTIONS */
+  section { padding: 6rem 0; position: relative; z-index: 1; }
+  .section-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 3.5rem; }
+  .section-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.4em; text-transform: uppercase; color: var(--violet); white-space: nowrap; }
+  .section-title { font-family: var(--display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 300; color: var(--white); }
+  .section-line { flex: 1; height: 1px; background: linear-gradient(to right, var(--border), transparent); }
+  .divider { height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); position: relative; z-index: 1; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  @media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+  .about-phrase {
+    font-family: var(--display); font-style: italic; font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 300; line-height: 1.3; color: var(--lila);
+    text-shadow: 0 0 40px rgba(192,132,252,0.3);
+    border-left: 2px solid var(--violet); padding-left: 1.5rem;
+    margin-bottom: 2rem;
   }
 
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 3.5rem;
-  }
+  .about-text { font-size: 0.95rem; line-height: 1.9; color: rgba(245,240,255,0.72); margin-bottom: 1.25rem; }
 
-  .section-tag {
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--violet);
-    white-space: nowrap;
+  .about-pillars { display: flex; flex-direction: column; gap: 1rem; }
+  .pillar {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
+    padding: 1.25rem 1.5rem; transition: border-color 0.3s, box-shadow 0.3s;
   }
+  .pillar:hover { border-color: rgba(168,85,247,0.35); box-shadow: 0 4px 20px rgba(168,85,247,0.08); }
+  .pillar-title { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.4rem; }
+  .pillar-desc { font-size: 0.85rem; line-height: 1.6; color: rgba(245,240,255,0.65); }
 
-  .section-title {
-    font-family: var(--display);
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    font-weight: 300;
-    color: var(--white);
-  }
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; }
 
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, var(--border), transparent);
-  }
-
-  /* ── DIVIDER ── */
-  .divider {
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--border), transparent);
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ── PROJECTS ── */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-    text-decoration: none;
-    display: block;
-    color: inherit;
-  }
-
-  .project-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(168,85,247,0.06), transparent 60%);
-    opacity: 0;
-    transition: opacity 0.35s;
-  }
-
-  .project-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(168,85,247,0.4);
-    box-shadow: 0 16px 48px rgba(168,85,247,0.15);
-  }
+  .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 2rem; position: relative; overflow: hidden; transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease; text-decoration: none; display: block; color: inherit; }
+  .project-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(168,85,247,0.06), transparent 60%); opacity: 0; transition: opacity 0.35s; }
+  .project-card:hover { transform: translateY(-6px); border-color: rgba(168,85,247,0.4); box-shadow: 0 16px 48px rgba(168,85,247,0.15); }
   .project-card:hover::after { opacity: 1; }
+  .project-glow { position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(168,85,247,0.2), transparent 70%); border-radius: 50%; pointer-events: none; }
+  .project-num { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.3em; color: var(--violet); text-transform: uppercase; margin-bottom: 1rem; }
+  .project-name { font-family: var(--display); font-size: 1.7rem; font-weight: 600; color: var(--lila-soft); margin-bottom: 0.75rem; line-height: 1.1; }
 
-  .project-glow {
-    position: absolute;
-    top: -40px; right: -40px;
-    width: 120px; height: 120px;
-    background: radial-gradient(circle, rgba(168,85,247,0.2), transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-  }
+  .project-meta { margin-bottom: 1rem; }
+  .project-meta-row { display: flex; gap: 0.5rem; margin-bottom: 0.4rem; align-items: baseline; }
+  .project-meta-label { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--violet); min-width: 80px; flex-shrink: 0; }
+  .project-meta-text { font-size: 0.82rem; line-height: 1.6; color: rgba(245,240,255,0.65); }
 
-  .project-num {
-    font-size: 0.6rem;
-    font-weight: 500;
-    letter-spacing: 0.3em;
-    color: var(--violet);
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-
-  .project-name {
-    font-family: var(--display);
-    font-size: 1.7rem;
-    font-weight: 600;
-    color: var(--lila-soft);
-    margin-bottom: 0.75rem;
-    line-height: 1.1;
-  }
-
-  .project-desc {
-    font-size: 0.875rem;
-    line-height: 1.75;
-    color: rgba(245,240,255,0.6);
-    margin-bottom: 1.5rem;
-  }
-
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .chip {
-    font-size: 0.6rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.25rem 0.65rem;
-    border-radius: 100px;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    background: rgba(168,85,247,0.06);
-  }
-
-  .project-link {
-    font-size: 0.72rem;
-    font-weight: 500;
-    color: var(--lila);
-    letter-spacing: 0.05em;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-  .project-link svg { transition: transform 0.2s; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+  .chip { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 100px; border: 1px solid var(--border); color: var(--muted); background: rgba(168,85,247,0.06); }
+  .project-link { font-size: 0.72rem; font-weight: 500; color: var(--lila); letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 0.4rem; }
   .project-card:hover .project-link svg { transform: translate(3px, -3px); }
+  .project-link svg { transition: transform 0.2s; }
 
-  .project-status {
-    font-size: 0.62rem;
-    font-weight: 500;
-    color: rgba(240,171,252,0.6);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-  .status-dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--pink);
-    opacity: 0.6;
-    animation: pulse 2.5s ease-in-out infinite;
-  }
-  @keyframes pulse { 0%,100%{opacity:0.6;} 50%{opacity:0.2;} }
-
-  /* ── SKILLS ── */
-  .skills-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2.5rem;
-  }
-
+  /* SKILLS */
+  .skills-layout { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5rem; }
   @media (max-width: 640px) { .skills-layout { grid-template-columns: 1fr; } }
   @media (max-width: 900px) and (min-width: 641px) { .skills-layout { grid-template-columns: 1fr 1fr; } }
 
-  .skill-group {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 1.75rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-  .skill-group:hover {
-    border-color: rgba(168,85,247,0.35);
-    box-shadow: 0 8px 32px rgba(168,85,247,0.08);
-  }
+  .skill-group { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1.75rem; transition: border-color 0.3s, box-shadow 0.3s; }
+  .skill-group:hover { border-color: rgba(168,85,247,0.35); box-shadow: 0 8px 32px rgba(168,85,247,0.08); }
+  .skill-group-icon { font-size: 1.3rem; margin-bottom: 0.75rem; }
+  .skill-group-title { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--violet); margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-pill { font-size: 0.72rem; font-weight: 400; padding: 0.35rem 0.8rem; border-radius: 100px; background: rgba(168,85,247,0.08); border: 1px solid var(--border); color: rgba(245,240,255,0.8); transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .skill-pill:hover { background: rgba(168,85,247,0.18); color: var(--lila-soft); border-color: rgba(168,85,247,0.4); }
 
-  .skill-group-icon {
-    font-size: 1.3rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .skill-group-title {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--violet);
-    margin-bottom: 1.25rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .skill-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .skill-pill {
-    font-size: 0.72rem;
-    font-weight: 400;
-    padding: 0.35rem 0.8rem;
-    border-radius: 100px;
-    background: rgba(168,85,247,0.08);
-    border: 1px solid var(--border);
-    color: rgba(245,240,255,0.8);
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
-  }
-  .skill-pill:hover {
-    background: rgba(168,85,247,0.18);
-    color: var(--lila-soft);
-    border-color: rgba(168,85,247,0.4);
-  }
-
-  /* ── EDUCATION & CERTS ── */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-  }
+  /* EDUCATION */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
   @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; gap: 3rem; } }
+  .edu-item { padding: 1.5rem 0; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.3rem; }
+  .edu-name { font-family: var(--display); font-size: 1.15rem; font-weight: 400; color: var(--lila-soft); }
+  .edu-where { font-size: 0.75rem; font-weight: 400; color: var(--muted); letter-spacing: 0.08em; }
+  .edu-badge { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--violet); margin-top: 0.25rem; }
+  .edu-badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--violet); box-shadow: 0 0 6px var(--violet); animation: pulse 2s infinite; }
+  .edu-sub { font-size: 0.78rem; color: rgba(245,240,255,0.45); line-height: 1.6; margin-top: 0.25rem; }
 
-  .edu-item {
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-  }
+  /* EXPERIENCE */
+  .exp-item { display: grid; grid-template-columns: 140px 1fr; gap: 3rem; padding: 2.5rem 0; border-bottom: 1px solid var(--border); }
+  @media (max-width: 600px) { .exp-item { grid-template-columns: 1fr; gap: 0.75rem; } }
+  .exp-period { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; padding-top: 0.2rem; }
+  .exp-role { font-family: var(--display); font-size: 1.3rem; font-weight: 400; color: var(--white); margin-bottom: 0.25rem; }
+  .exp-company { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; color: var(--violet); text-transform: uppercase; margin-bottom: 1rem; }
 
-  .edu-name {
-    font-family: var(--display);
-    font-size: 1.15rem;
-    font-weight: 400;
-    color: var(--lila-soft);
-  }
-
-  .edu-where {
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-  }
-
-  .edu-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-size: 0.58rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--violet);
-    margin-top: 0.25rem;
-  }
-  .edu-badge::before {
-    content: '';
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--violet);
-    box-shadow: 0 0 6px var(--violet);
-    animation: pulse 2s infinite;
-  }
-
-  .edu-sub {
-    font-size: 0.78rem;
-    color: rgba(245,240,255,0.45);
-    line-height: 1.6;
-    margin-top: 0.25rem;
-  }
-
-  /* ── EXPERIENCE ── */
-  .exp-item {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 3rem;
-    padding: 2.5rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  @media (max-width: 600px) {
-    .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
-  }
-
-  .exp-period {
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    color: var(--muted);
-    text-transform: uppercase;
-    padding-top: 0.2rem;
-  }
-
-  .exp-role {
-    font-family: var(--display);
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: var(--white);
-    margin-bottom: 0.25rem;
-  }
-
-  .exp-company {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    color: var(--violet);
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-
-  /* ── LANGUAGES ── */
-  .lang-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2.5rem;
-  }
-
-  .lang-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 1.5rem 2rem;
-    min-width: 160px;
-    transition: border-color 0.3s;
-  }
+  /* LANGUAGES */
+  .lang-row { display: flex; flex-wrap: wrap; gap: 2.5rem; }
+  .lang-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem 2rem; min-width: 160px; transition: border-color 0.3s; }
   .lang-card:hover { border-color: rgba(168,85,247,0.35); }
+  .lang-name { font-family: var(--display); font-size: 1.3rem; font-weight: 400; color: var(--lila-soft); margin-bottom: 0.25rem; }
+  .lang-level { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+  .lang-dots { display: flex; gap: 5px; }
+  .ldot { width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--border); background: transparent; }
+  .ldot.on { background: var(--violet); border-color: var(--violet); box-shadow: 0 0 8px rgba(168,85,247,0.5); }
 
-  .lang-name {
-    font-family: var(--display);
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: var(--lila-soft);
-    margin-bottom: 0.25rem;
-  }
+  /* CONTACT */
+  .contact-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .contact-card { display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.75rem; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; text-decoration: none; color: var(--white); transition: all 0.3s ease; flex: 1; min-width: 200px; }
+  .contact-card:hover { border-color: rgba(168,85,247,0.45); background: rgba(168,85,247,0.06); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(168,85,247,0.12); }
+  .contact-icon { width: 38px; height: 38px; border-radius: 50%; background: rgba(168,85,247,0.12); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .contact-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.15rem; }
+  .contact-value { font-size: 0.85rem; color: var(--lila-soft); }
 
-  .lang-level {
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.75rem;
-  }
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 3rem 0; text-align: center; position: relative; z-index: 1; }
+  .footer-quote { font-family: var(--display); font-style: italic; font-size: 1.3rem; font-weight: 300; color: var(--lila); margin-bottom: 1rem; text-shadow: 0 0 30px rgba(192,132,252,0.3); }
+  .footer-copy { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.15em; }
 
-  .lang-dots {
-    display: flex;
-    gap: 5px;
-  }
-
-  .ldot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    background: transparent;
-  }
-  .ldot.on {
-    background: var(--violet);
-    border-color: var(--violet);
-    box-shadow: 0 0 8px rgba(168,85,247,0.5);
-  }
-
-  /* ── CONTACT SECTION ── */
-  .contact-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .contact-card {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.25rem 1.75rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    text-decoration: none;
-    color: var(--white);
-    transition: all 0.3s ease;
-    flex: 1;
-    min-width: 200px;
-  }
-  .contact-card:hover {
-    border-color: rgba(168,85,247,0.45);
-    background: rgba(168,85,247,0.06);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(168,85,247,0.12);
-  }
-
-  .contact-icon {
-    width: 38px; height: 38px;
-    border-radius: 50%;
-    background: rgba(168,85,247,0.12);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    flex-shrink: 0;
-  }
-
-  .contact-label {
-    font-size: 0.6rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.15rem;
-  }
-
-  .contact-value {
-    font-size: 0.85rem;
-    color: var(--lila-soft);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 3rem 0;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .footer-quote {
-    font-family: var(--display);
-    font-style: italic;
-    font-size: 1.3rem;
-    font-weight: 300;
-    color: var(--lila);
-    margin-bottom: 1rem;
-    text-shadow: 0 0 30px rgba(192,132,252,0.3);
-  }
-
-  .footer-copy {
-    font-size: 0.7rem;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-  }
-
-  /* ── REVEAL ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
+  /* ANIMATIONS */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.up { opacity: 1; transform: none; }
+  @keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
 
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (max-width: 640px) {
-    nav { padding: 1rem; }
-    .nav-links { gap: 1rem; }
-    .nav-links a { font-size: 0.65rem; }
-  }
+  @media (max-width: 640px) { nav { padding: 1rem; } .nav-links { gap: 0.75rem; } .nav-links a { font-size: 0.6rem; } }
 </style>
 </head>
 <body>
 
-<!-- Ambient -->
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
 <div class="blob blob-3"></div>
@@ -753,11 +203,12 @@
 <nav>
   <a class="nav-logo" href="#">Celena B. Gómez</a>
   <ul class="nav-links">
-    <li><a href="#proyectos">Proyectos</a></li>
-    <li><a href="#habilidades">Habilidades</a></li>
-    <li><a href="#formacion">Formación</a></li>
-    <li><a href="#experiencia">Experiencia</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#sobre-mi" data-i18n="nav_about">Sobre mí</a></li>
+    <li><a href="#proyectos" data-i18n="nav_projects">Proyectos</a></li>
+    <li><a href="#habilidades" data-i18n="nav_skills">Habilidades</a></li>
+    <li><a href="#formacion" data-i18n="nav_education">Formación</a></li>
+    <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
+    <li><button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button></li>
   </ul>
 </nav>
 
@@ -766,21 +217,21 @@
   <div class="container">
     <div class="hero-inner">
       <div>
-        <div class="hero-eyebrow">Buenos Aires, Argentina</div>
+        <div class="hero-eyebrow" data-i18n="hero_location">Buenos Aires, Argentina</div>
         <h1 class="hero-name">
           Celena<br>
           <em>Belén Gómez</em>
         </h1>
-        <p class="hero-subtitle">AI &amp; Data-Oriented Digital Creator &nbsp;·&nbsp; Full Stack &nbsp;·&nbsp; Data Science</p>
-        <p class="hero-bio">
-          Apasionada por la inteligencia artificial, el análisis de datos y la creación de experiencias digitales con propósito. Combino pensamiento analítico, creatividad y tecnología para construir productos centrados en las personas. Autodidacta, curiosa y orientada a la innovación.
+        <p class="hero-subtitle" data-i18n="hero_subtitle">Data Science · IA · Tecnología con propósito</p>
+        <p class="hero-bio" data-i18n="hero_bio">
+          Curiosa por naturaleza. Aprendo construyendo, conecto disciplinas distintas y uso datos e inteligencia artificial para comprender patrones y construir tecnología que mejore la vida de las personas.
         </p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="mailto:celenagomez.1712@gmail.com">✉ Escribime</a>
+          <a class="btn btn-primary" href="mailto:celenagomez.1712@gmail.com" data-i18n="hero_cta_contact">✉ Escribime</a>
           <a class="btn btn-ghost" href="https://www.linkedin.com/in/celena-gomez-535a353b3/" target="_blank">LinkedIn →</a>
           <a class="btn btn-ghost" href="https://github.com/gomezcelena21" target="_blank">GitHub →</a>
-          <a class="btn btn-ghost" href="cv/C_Celena_Gomez.docx" download>⬇ CV Word</a>
-          <a class="btn btn-ghost" href="cv/Cv_imagen.pdf" download>⬇ CV PDF</a>
+          <a class="btn btn-ghost" href="cv/C_Celena_Gomez.docx" download data-i18n="hero_cta_cv_word">⬇ CV Word</a>
+          <a class="btn btn-ghost" href="cv/Cv_imagen.pdf" download data-i18n="hero_cta_cv_pdf">⬇ CV PDF</a>
         </div>
       </div>
       <div class="hero-avatar">
@@ -795,12 +246,51 @@
 
 <div class="divider"></div>
 
+<!-- ABOUT -->
+<section id="sobre-mi">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">00</span>
+      <h2 class="section-title" data-i18n="about_title">Sobre mí</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="about-phrase" data-i18n="about_phrase">"Comprender patrones para construir tecnología con propósito."</p>
+        <p class="about-text" data-i18n="about_p1">Desde pequeña tuve una curiosidad constante por entender cómo funcionan las cosas. Esa misma curiosidad me llevó, años después, a descubrir la Ciencia de Datos y la Inteligencia Artificial como herramientas para comprender comportamientos, sistemas y personas.</p>
+        <p class="about-text" data-i18n="about_p2">No espero que una institución me enseñe todo. Diseño mi propio recorrido de aprendizaje, conecto disciplinas que aparentemente no tienen relación, y construyo proyectos reales para entender en profundidad. Aprendo porque quiero comprender, no solo porque quiero saber hacer.</p>
+        <p class="about-text" data-i18n="about_p3">Hoy estoy formándome en Data Science y Big Data, con foco en IA aplicada, análisis de comportamientos y tecnología centrada en las personas. Mi objetivo no es una herramienta. Mi objetivo es el impacto.</p>
+      </div>
+      <div class="about-pillars reveal">
+        <div class="pillar">
+          <div class="pillar-title" data-i18n="pillar1_title">Curiosidad intelectual</div>
+          <div class="pillar-desc" data-i18n="pillar1_desc">Busco patrones, reglas y explicaciones en todo lo que me rodea. Esa tendencia hoy se expresa en Data Science e IA.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title" data-i18n="pillar2_title">Aprendizaje autodirigido</div>
+          <div class="pillar-desc" data-i18n="pillar2_desc">Diseño mis propios programas de estudio. Uso IA como herramienta de aprendizaje y aprendo mediante proyectos reales.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title" data-i18n="pillar3_title">Tecnología con propósito</div>
+          <div class="pillar-desc" data-i18n="pillar3_desc">La tecnología no es el objetivo. Es la herramienta para comprender, resolver problemas y generar impacto positivo en las personas.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title" data-i18n="pillar4_title">Comprensión de patrones</div>
+          <div class="pillar-desc" data-i18n="pillar4_desc">Me interesa entender por qué ocurren las cosas, qué datos explican un comportamiento y cómo la IA puede ayudar a aprender mejor.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- PROJECTS -->
 <section id="proyectos">
   <div class="container">
     <div class="section-header reveal">
       <span class="section-tag">01</span>
-      <h2 class="section-title">Proyectos destacados</h2>
+      <h2 class="section-title" data-i18n="projects_title">Proyectos destacados</h2>
       <div class="section-line"></div>
     </div>
 
@@ -811,20 +301,14 @@
         <div class="project-num">Proyecto 001</div>
         <img src="img/dulcemalia.jpg" alt="Dulce Malia" style="width:100%;height:160px;object-fit:cover;border-radius:3px;margin-bottom:1.25rem;opacity:0.9;">
         <div class="project-name">Dulce Malia</div>
-        <p class="project-desc">E-commerce completo para una pastelería artesanal. Diseño responsive, identidad visual propia, catálogo de productos y sistema de contacto. Desplegado en Render.</p>
-        <div class="project-tags">
-          <span class="chip">JavaScript</span>
-          <span class="chip">HTML/CSS</span>
-          <span class="chip">Responsive</span>
-          <span class="chip">UI/UX</span>
-          <span class="chip">Render</span>
+        <div class="project-meta">
+          <div class="project-meta-row"><span class="project-meta-label" data-i18n="proj_why">Motivación</span><span class="project-meta-text" data-i18n="dulce_why">Aprender construyendo algo real con identidad visual propia.</span></div>
+          <div class="project-meta-row"><span class="project-meta-label" data-i18n="proj_what">Objetivo</span><span class="project-meta-text" data-i18n="dulce_what">E-commerce completo para una pastelería artesanal con catálogo, carrito y sistema de contacto.</span></div>
         </div>
-        <span class="project-link" style="margin-top:1rem;display:inline-flex;">
-          Ver proyecto en vivo
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="margin-left:4px;">
-            <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
+        <div class="project-tags">
+          <span class="chip">JavaScript</span><span class="chip">HTML/CSS</span><span class="chip">Responsive</span><span class="chip">UI/UX</span><span class="chip">Render</span>
+        </div>
+        <span class="project-link" style="margin-top:1rem;display:inline-flex;" data-i18n="proj_view">Ver proyecto en vivo <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="margin-left:4px;"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
 
       <a class="project-card reveal" href="https://gomezcelena21.github.io/predicador-libertadores-2026/" target="_blank">
@@ -832,20 +316,14 @@
         <div class="project-num">Proyecto 002</div>
         <img src="img/arena.jpg" alt="Arena Predictiva" style="width:100%;height:160px;object-fit:cover;border-radius:3px;margin-bottom:1.25rem;opacity:0.9;">
         <div class="project-name">Arena Predictiva</div>
-        <p class="project-desc">Dashboard de análisis de datos e inteligencia artificial aplicado a la Copa Libertadores 2026. Usa modelos de predicción estadística (Poisson), datos reales del torneo, simulaciones de partidos y bracket interactivo con confianza de IA.</p>
-        <div class="project-tags">
-          <span class="chip">Data Science</span>
-          <span class="chip">IA Aplicada</span>
-          <span class="chip">Modelo Poisson</span>
-          <span class="chip">JavaScript</span>
-          <span class="chip">Visualización</span>
+        <div class="project-meta">
+          <div class="project-meta-row"><span class="project-meta-label" data-i18n="proj_why">Motivación</span><span class="project-meta-text" data-i18n="arena_why">Explorar cómo los datos pueden anticipar comportamientos y escenarios futuros.</span></div>
+          <div class="project-meta-row"><span class="project-meta-label" data-i18n="proj_what">Objetivo</span><span class="project-meta-text" data-i18n="arena_what">Dashboard de predicción con modelo Poisson, datos reales de la Copa Libertadores 2026, simulaciones y bracket interactivo con confianza de IA.</span></div>
         </div>
-        <span class="project-link" style="margin-top:1rem;display:inline-flex;">
-          Ver proyecto en vivo
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="margin-left:4px;">
-            <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
+        <div class="project-tags">
+          <span class="chip">Data Science</span><span class="chip">Modelo Poisson</span><span class="chip">IA Aplicada</span><span class="chip">JavaScript</span><span class="chip">Visualización</span>
+        </div>
+        <span class="project-link" style="margin-top:1rem;display:inline-flex;" data-i18n="proj_view">Ver proyecto en vivo <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="margin-left:4px;"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
 
       <a class="project-card reveal" href="https://gomezcelena21.github.io/EduContext/" target="_blank">
@@ -853,19 +331,14 @@
         <div class="project-num">Proyecto 003</div>
         <img src="img/educontext.jpg" alt="EduContext" style="width:100%;height:160px;object-fit:cover;border-radius:3px;margin-bottom:1.25rem;opacity:0.9;">
         <div class="project-name">EduContext</div>
-        <p class="project-desc">Plataforma educativa que adapta el aprendizaje usando inteligencia artificial y herramientas digitales según la profesión, contexto y vida real del usuario. Enfocada en accesibilidad y experiencias centradas en las personas.</p>
-        <div class="project-tags">
-          <span class="chip">IA Aplicada</span>
-          <span class="chip">Ed-Tech</span>
-          <span class="chip">Human-Centered</span>
-          <span class="chip">Accesibilidad</span>
+        <div class="project-meta">
+          <div class="project-meta-row"><span class="project-meta-label" data-i18n="proj_why">Motivación</span><span class="project-meta-text" data-i18n="edu_why">Acercar la tecnología y la IA a más personas, sin importar su perfil o contexto.</span></div>
+          <div class="project-meta-row"><span class="project-meta-label" data-i18n="proj_what">Objetivo</span><span class="project-meta-text" data-i18n="edu_what">Plataforma que adapta herramientas digitales e IA a la profesión y vida real del usuario, con foco en accesibilidad y aprendizaje contextual.</span></div>
         </div>
-        <span class="project-link" style="margin-top:1rem;display:inline-flex;">
-          Ver proyecto en vivo
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="margin-left:4px;">
-            <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
+        <div class="project-tags">
+          <span class="chip">IA Aplicada</span><span class="chip">Ed-Tech</span><span class="chip">Human-Centered</span><span class="chip">Accesibilidad</span>
+        </div>
+        <span class="project-link" style="margin-top:1rem;display:inline-flex;" data-i18n="proj_view">Ver proyecto en vivo <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="margin-left:4px;"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
 
       <a class="project-card reveal" href="https://gomezcelena21.github.io/cg-beauty-lab/" target="_blank">
@@ -873,20 +346,14 @@
         <div class="project-num">Proyecto 004</div>
         <img src="img/beautylab.jpg" alt="CG Beauty Lab" style="width:100%;height:160px;object-fit:cover;border-radius:3px;margin-bottom:1.25rem;opacity:0.9;">
         <div class="project-name">CG Beauty Lab</div>
-        <p class="project-desc">Plataforma web de maquillaje y skincare con guías paso a paso, técnicas y niveles para todo tipo de personas. Diseño elegante, identidad visual propia y contenido educativo centrado en la experiencia del usuario.</p>
-        <div class="project-tags">
-          <span class="chip">HTML/CSS</span>
-          <span class="chip">JavaScript</span>
-          <span class="chip">UI/UX</span>
-          <span class="chip">Diseño editorial</span>
-          <span class="chip">GitHub Pages</span>
+        <div class="project-meta">
+          <div class="project-meta-row"><span class="project-meta-label" data-i18n="proj_why">Motivación</span><span class="project-meta-text" data-i18n="beauty_why">Transformar información dispersa en aprendizaje accesible para quien lo necesita.</span></div>
+          <div class="project-meta-row"><span class="project-meta-label" data-i18n="proj_what">Objetivo</span><span class="project-meta-text" data-i18n="beauty_what">Plataforma de maquillaje y skincare con guías paso a paso, técnicas y niveles para todo tipo de personas.</span></div>
         </div>
-        <span class="project-link" style="margin-top:1rem;display:inline-flex;">
-          Ver proyecto en vivo
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="margin-left:4px;">
-            <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
+        <div class="project-tags">
+          <span class="chip">HTML/CSS</span><span class="chip">JavaScript</span><span class="chip">UI/UX</span><span class="chip">Diseño editorial</span><span class="chip">GitHub Pages</span>
+        </div>
+        <span class="project-link" style="margin-top:1rem;display:inline-flex;" data-i18n="proj_view">Ver proyecto en vivo <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="margin-left:4px;"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
 
     </div>
@@ -900,171 +367,83 @@
   <div class="container">
     <div class="section-header reveal">
       <span class="section-tag">02</span>
-      <h2 class="section-title">Habilidades</h2>
+      <h2 class="section-title" data-i18n="skills_title">Habilidades</h2>
       <div class="section-line"></div>
     </div>
-
     <div class="skills-layout">
-
       <div class="skill-group reveal">
         <div class="skill-group-icon">🔮</div>
-        <div class="skill-group-title">Datos &amp; IA</div>
+        <div class="skill-group-title" data-i18n="skills_data">Datos &amp; IA</div>
         <div class="skill-pills">
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">Data Science</span>
-          <span class="skill-pill">Inteligencia Artificial</span>
-          <span class="skill-pill">Visualización de datos</span>
-          <span class="skill-pill">Bases de datos</span>
-          <span class="skill-pill">Prompt Engineering</span>
+          <span class="skill-pill">Python</span><span class="skill-pill">Data Science</span><span class="skill-pill">Big Data</span><span class="skill-pill">Inteligencia Artificial</span><span class="skill-pill">Visualización de datos</span><span class="skill-pill">Bases de datos</span><span class="skill-pill">Prompt Engineering</span>
         </div>
       </div>
-
       <div class="skill-group reveal">
         <div class="skill-group-icon">✦</div>
-        <div class="skill-group-title">Full Stack</div>
+        <div class="skill-group-title" data-i18n="skills_fullstack">Full Stack</div>
         <div class="skill-pills">
-          <span class="skill-pill">HTML</span>
-          <span class="skill-pill">CSS</span>
-          <span class="skill-pill">JavaScript</span>
-          <span class="skill-pill">Responsive Design</span>
-          <span class="skill-pill">UI/UX</span>
-          <span class="skill-pill">Supabase</span>
-          <span class="skill-pill">Render</span>
-          <span class="skill-pill">Vercel</span>
-          <span class="skill-pill">GitHub</span>
+          <span class="skill-pill">HTML</span><span class="skill-pill">CSS</span><span class="skill-pill">JavaScript</span><span class="skill-pill">Responsive Design</span><span class="skill-pill">UI/UX</span><span class="skill-pill">Supabase</span><span class="skill-pill">Render</span><span class="skill-pill">Vercel</span><span class="skill-pill">GitHub</span>
         </div>
       </div>
-
       <div class="skill-group reveal">
         <div class="skill-group-icon">◈</div>
-        <div class="skill-group-title">Soft Skills</div>
+        <div class="skill-group-title" data-i18n="skills_soft">Soft Skills</div>
         <div class="skill-pills">
-          <span class="skill-pill">Comunicación</span>
-          <span class="skill-pill">Creatividad</span>
-          <span class="skill-pill">Resolución de problemas</span>
-          <span class="skill-pill">Aprendizaje autodidacta</span>
-          <span class="skill-pill">Pensamiento analítico</span>
-          <span class="skill-pill">Adaptabilidad</span>
-          <span class="skill-pill">Trabajo en equipo</span>
+          <span class="skill-pill" data-i18n="s1">Curiosidad intelectual</span><span class="skill-pill" data-i18n="s2">Aprendizaje autodidacta</span><span class="skill-pill" data-i18n="s3">Pensamiento analítico</span><span class="skill-pill" data-i18n="s4">Resolución de problemas</span><span class="skill-pill" data-i18n="s5">Creatividad</span><span class="skill-pill" data-i18n="s6">Comunicación</span><span class="skill-pill" data-i18n="s7">Adaptabilidad</span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- EDUCATION & CERTS -->
+<!-- EDUCATION -->
 <section id="formacion">
   <div class="container">
     <div class="section-header reveal">
       <span class="section-tag">03</span>
-      <h2 class="section-title">Formación &amp; Certificaciones</h2>
+      <h2 class="section-title" data-i18n="education_title">Formación &amp; Certificaciones</h2>
       <div class="section-line"></div>
     </div>
-
     <div class="two-col">
       <div class="reveal">
         <div class="edu-item">
-          <div class="edu-name">Data Science &amp; Análisis de Datos</div>
-          <div class="edu-where">Formación en progreso</div>
-          <span class="edu-badge">En curso</span>
+          <div class="edu-name" data-i18n="edu1_name">Data Science &amp; Análisis de Datos</div>
+          <div class="edu-where" data-i18n="edu1_where">Formación en progreso</div>
+          <span class="edu-badge" data-i18n="edu1_badge">En curso</span>
           <p class="edu-sub">Python · Análisis de datos · IA · Visualización · Bases de datos</p>
         </div>
         <div class="edu-item">
-          <div class="edu-name">Administración Hotelera</div>
+          <div class="edu-name" data-i18n="edu2_name">Diplomatura en Big Data</div>
+          <div class="edu-where" data-i18n="edu2_where">Próximamente</div>
+          <span class="edu-badge" data-i18n="edu2_badge">Planificada</span>
+        </div>
+        <div class="edu-item">
+          <div class="edu-name" data-i18n="edu3_name">Administración Hotelera</div>
           <div class="edu-where">Eddis Educativa — 2022</div>
         </div>
         <div class="edu-item">
-          <div class="edu-name">Educación Secundaria Completa</div>
+          <div class="edu-name" data-i18n="edu4_name">Educación Secundaria Completa</div>
           <div class="edu-where">Colegio Gral. San Martín — 2019</div>
         </div>
       </div>
-
       <div class="reveal">
         <div class="edu-item">
-          <div class="edu-name">Introducción a Ciencia de Datos</div>
+          <div class="edu-name" data-i18n="cert1">Introducción a Ciencia de Datos</div>
           <div class="edu-where">Santander Open Academy</div>
         </div>
         <div class="edu-item">
-          <div class="edu-name">Introducción a Python</div>
+          <div class="edu-name" data-i18n="cert2">Introducción a Python</div>
           <div class="edu-where">Santander Open Academy</div>
         </div>
         <div class="edu-item">
-          <div class="edu-name">Introducción a Bases de Datos</div>
+          <div class="edu-name" data-i18n="cert3">Introducción a Bases de Datos</div>
           <div class="edu-where">TodoCode</div>
         </div>
         <div class="edu-item">
-          <div class="edu-name">Data Analysis Lab</div>
+          <div class="edu-name" data-i18n="cert4">Data Analysis Lab</div>
           <div class="edu-where">Unicor Academy</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- EXPERIENCE -->
-<section id="experiencia">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-tag">04</span>
-      <h2 class="section-title">Experiencia laboral</h2>
-      <div class="section-line"></div>
-    </div>
-
-    <div>
-      <div class="exp-item reveal">
-        <div class="exp-period">2023 — Actualidad</div>
-        <div>
-          <div class="exp-role">Niñera Particular</div>
-          <div class="exp-company">Trabajo independiente</div>
-          <div class="skill-pills">
-            <span class="skill-pill">Organización</span>
-            <span class="skill-pill">Responsabilidad</span>
-            <span class="skill-pill">Comunicación interpersonal</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="exp-item reveal">
-        <div class="exp-period">Anterior</div>
-        <div>
-          <div class="exp-role">Cajera / Repositora</div>
-          <div class="exp-company">Supermercado Día</div>
-          <div class="skill-pills">
-            <span class="skill-pill">Atención al cliente</span>
-            <span class="skill-pill">Trabajo bajo presión</span>
-            <span class="skill-pill">Organización operativa</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="exp-item reveal">
-        <div class="exp-period">Anterior</div>
-        <div>
-          <div class="exp-role">Agente de Call Center</div>
-          <div class="exp-company">Fiat Marinaro</div>
-          <div class="skill-pills">
-            <span class="skill-pill">Comunicación efectiva</span>
-            <span class="skill-pill">Soporte al cliente</span>
-            <span class="skill-pill">Manejo de conflictos</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="exp-item reveal">
-        <div class="exp-period">Anterior</div>
-        <div>
-          <div class="exp-role">Vendedora</div>
-          <div class="exp-company">Bosque Mágico — Bazar</div>
-          <div class="skill-pills">
-            <span class="skill-pill">Ventas</span>
-            <span class="skill-pill">Atención al cliente</span>
-            <span class="skill-pill">Resolución de problemas</span>
-          </div>
         </div>
       </div>
     </div>
@@ -1077,39 +456,15 @@
 <section>
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-tag">05</span>
-      <h2 class="section-title">Idiomas</h2>
+      <span class="section-tag">04</span>
+      <h2 class="section-title" data-i18n="lang_title">Idiomas</h2>
       <div class="section-line"></div>
     </div>
     <div class="lang-row reveal">
-      <div class="lang-card">
-        <div class="lang-name">Español</div>
-        <div class="lang-level">Nativo</div>
-        <div class="lang-dots">
-          <div class="ldot on"></div><div class="ldot on"></div><div class="ldot on"></div><div class="ldot on"></div><div class="ldot on"></div>
-        </div>
-      </div>
-      <div class="lang-card">
-        <div class="lang-name">Inglés</div>
-        <div class="lang-level">Básico</div>
-        <div class="lang-dots">
-          <div class="ldot on"></div><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div>
-        </div>
-      </div>
-      <div class="lang-card">
-        <div class="lang-name">Italiano</div>
-        <div class="lang-level">Básico</div>
-        <div class="lang-dots">
-          <div class="ldot on"></div><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div>
-        </div>
-      </div>
-      <div class="lang-card">
-        <div class="lang-name">Portugués</div>
-        <div class="lang-level">Básico</div>
-        <div class="lang-dots">
-          <div class="ldot on"></div><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div>
-        </div>
-      </div>
+      <div class="lang-card"><div class="lang-name" data-i18n="lang_es">Español</div><div class="lang-level" data-i18n="lang_native">Nativo</div><div class="lang-dots"><div class="ldot on"></div><div class="ldot on"></div><div class="ldot on"></div><div class="ldot on"></div><div class="ldot on"></div></div></div>
+      <div class="lang-card"><div class="lang-name" data-i18n="lang_en">Inglés</div><div class="lang-level" data-i18n="lang_basic">Básico</div><div class="lang-dots"><div class="ldot on"></div><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div></div></div>
+      <div class="lang-card"><div class="lang-name" data-i18n="lang_it">Italiano</div><div class="lang-level" data-i18n="lang_basic">Básico</div><div class="lang-dots"><div class="ldot on"></div><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div></div></div>
+      <div class="lang-card"><div class="lang-name" data-i18n="lang_pt">Portugués</div><div class="lang-level" data-i18n="lang_basic">Básico</div><div class="lang-dots"><div class="ldot on"></div><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div></div></div>
     </div>
   </div>
 </section>
@@ -1120,38 +475,26 @@
 <section id="contacto">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-tag">06</span>
-      <h2 class="section-title">Contacto</h2>
+      <span class="section-tag">05</span>
+      <h2 class="section-title" data-i18n="contact_title">Contacto</h2>
       <div class="section-line"></div>
     </div>
     <div class="contact-grid reveal">
       <a class="contact-card" href="mailto:celenagomez.1712@gmail.com">
         <div class="contact-icon">✉</div>
-        <div>
-          <div class="contact-label">Email</div>
-          <div class="contact-value">celenagomez.1712@gmail.com</div>
-        </div>
+        <div><div class="contact-label">Email</div><div class="contact-value">celenagomez.1712@gmail.com</div></div>
       </a>
       <a class="contact-card" href="https://www.linkedin.com/in/celena-gomez-535a353b3/" target="_blank">
         <div class="contact-icon">in</div>
-        <div>
-          <div class="contact-label">LinkedIn</div>
-          <div class="contact-value">Celena Gómez</div>
-        </div>
+        <div><div class="contact-label">LinkedIn</div><div class="contact-value">Celena Gómez</div></div>
       </a>
       <a class="contact-card" href="https://github.com/gomezcelena21" target="_blank">
         <div class="contact-icon">⌥</div>
-        <div>
-          <div class="contact-label">GitHub</div>
-          <div class="contact-value">gomezcelena21</div>
-        </div>
+        <div><div class="contact-label">GitHub</div><div class="contact-value">gomezcelena21</div></div>
       </a>
-      <a class="contact-card" href="https://dulce-malia.onrender.com" target="_blank">
+      <a class="contact-card" href="https://gomezcelena21.github.io" target="_blank">
         <div class="contact-icon">✦</div>
-        <div>
-          <div class="contact-label">Proyecto en vivo</div>
-          <div class="contact-value">Dulce Malia</div>
-        </div>
+        <div><div class="contact-label" data-i18n="contact_portfolio">Portfolio</div><div class="contact-value">gomezcelena21.github.io</div></div>
       </a>
     </div>
   </div>
@@ -1160,7 +503,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <p class="footer-quote">"La tecnología tiene sentido cuando mejora la vida de las personas."</p>
+    <p class="footer-quote" data-i18n="footer_quote">"La tecnología tiene sentido cuando mejora la vida de las personas."</p>
     <p class="footer-copy">Celena Belén Gómez &nbsp;·&nbsp; Buenos Aires, Argentina &nbsp;·&nbsp; 2026</p>
   </div>
 </footer>
@@ -1177,6 +520,95 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => obs.observe(el));
+
+  // i18n
+  const translations = {
+    es: {
+      nav_about: "Sobre mí", nav_projects: "Proyectos", nav_skills: "Habilidades", nav_education: "Formación", nav_contact: "Contacto",
+      hero_location: "Buenos Aires, Argentina",
+      hero_subtitle: "Data Science · IA · Tecnología con propósito",
+      hero_bio: "Curiosa por naturaleza. Aprendo construyendo, conecto disciplinas distintas y uso datos e inteligencia artificial para comprender patrones y construir tecnología que mejore la vida de las personas.",
+      hero_cta_contact: "✉ Escribime", hero_cta_cv_word: "⬇ CV Word", hero_cta_cv_pdf: "⬇ CV PDF",
+      about_title: "Sobre mí",
+      about_phrase: '"Comprender patrones para construir tecnología con propósito."',
+      about_p1: "Desde pequeña tuve una curiosidad constante por entender cómo funcionan las cosas. Esa misma curiosidad me llevó, años después, a descubrir la Ciencia de Datos y la Inteligencia Artificial como herramientas para comprender comportamientos, sistemas y personas.",
+      about_p2: "No espero que una institución me enseñe todo. Diseño mi propio recorrido de aprendizaje, conecto disciplinas que aparentemente no tienen relación, y construyo proyectos reales para entender en profundidad. Aprendo porque quiero comprender, no solo porque quiero saber hacer.",
+      about_p3: "Hoy estoy formándome en Data Science y Big Data, con foco en IA aplicada, análisis de comportamientos y tecnología centrada en las personas. Mi objetivo no es una herramienta. Mi objetivo es el impacto.",
+      pillar1_title: "Curiosidad intelectual", pillar1_desc: "Busco patrones, reglas y explicaciones en todo lo que me rodea. Esa tendencia hoy se expresa en Data Science e IA.",
+      pillar2_title: "Aprendizaje autodirigido", pillar2_desc: "Diseño mis propios programas de estudio. Uso IA como herramienta de aprendizaje y aprendo mediante proyectos reales.",
+      pillar3_title: "Tecnología con propósito", pillar3_desc: "La tecnología no es el objetivo. Es la herramienta para comprender, resolver problemas y generar impacto positivo en las personas.",
+      pillar4_title: "Comprensión de patrones", pillar4_desc: "Me interesa entender por qué ocurren las cosas, qué datos explican un comportamiento y cómo la IA puede ayudar a aprender mejor.",
+      projects_title: "Proyectos destacados",
+      proj_why: "Motivación", proj_what: "Objetivo", proj_view: "Ver proyecto en vivo",
+      dulce_why: "Aprender construyendo algo real con identidad visual propia.",
+      dulce_what: "E-commerce completo para una pastelería artesanal con catálogo, carrito y sistema de contacto.",
+      arena_why: "Explorar cómo los datos pueden anticipar comportamientos y escenarios futuros.",
+      arena_what: "Dashboard de predicción con modelo Poisson, datos reales de la Copa Libertadores 2026, simulaciones y bracket interactivo con confianza de IA.",
+      edu_why: "Acercar la tecnología y la IA a más personas, sin importar su perfil o contexto.",
+      edu_what: "Plataforma que adapta herramientas digitales e IA a la profesión y vida real del usuario, con foco en accesibilidad y aprendizaje contextual.",
+      beauty_why: "Transformar información dispersa en aprendizaje accesible para quien lo necesita.",
+      beauty_what: "Plataforma de maquillaje y skincare con guías paso a paso, técnicas y niveles para todo tipo de personas.",
+      skills_title: "Habilidades", skills_data: "Datos & IA", skills_fullstack: "Full Stack", skills_soft: "Soft Skills",
+      s1:"Curiosidad intelectual",s2:"Aprendizaje autodidacta",s3:"Pensamiento analítico",s4:"Resolución de problemas",s5:"Creatividad",s6:"Comunicación",s7:"Adaptabilidad",
+      education_title: "Formación & Certificaciones",
+      edu1_name:"Data Science & Análisis de Datos",edu1_where:"Formación en progreso",edu1_badge:"En curso",
+      edu2_name:"Diplomatura en Big Data",edu2_where:"Próximamente",edu2_badge:"Planificada",
+      edu3_name:"Administración Hotelera",edu4_name:"Educación Secundaria Completa",
+      cert1:"Introducción a Ciencia de Datos",cert2:"Introducción a Python",cert3:"Introducción a Bases de Datos",cert4:"Data Analysis Lab",
+      lang_title:"Idiomas",lang_es:"Español",lang_en:"Inglés",lang_it:"Italiano",lang_pt:"Portugués",lang_native:"Nativo",lang_basic:"Básico",
+      contact_title:"Contacto",contact_portfolio:"Portfolio",
+      footer_quote:'"La tecnología tiene sentido cuando mejora la vida de las personas."'
+    },
+    en: {
+      nav_about: "About", nav_projects: "Projects", nav_skills: "Skills", nav_education: "Education", nav_contact: "Contact",
+      hero_location: "Buenos Aires, Argentina",
+      hero_subtitle: "Data Science · AI · Technology with Purpose",
+      hero_bio: "Naturally curious. I learn by building, connect different disciplines, and use data and artificial intelligence to understand patterns and create technology that improves people's lives.",
+      hero_cta_contact: "✉ Contact me", hero_cta_cv_word: "⬇ CV Word", hero_cta_cv_pdf: "⬇ CV PDF",
+      about_title: "About me",
+      about_phrase: '"Understanding patterns to build technology with purpose."',
+      about_p1: "From an early age I had a constant curiosity about understanding how things work. That same curiosity led me, years later, to discover Data Science and Artificial Intelligence as tools for understanding behaviors, systems, and people.",
+      about_p2: "I don't wait for an institution to teach me everything. I design my own learning path, connect disciplines that seemingly have no relation, and build real projects to understand deeply. I learn because I want to understand, not just because I want to know how to do things.",
+      about_p3: "Today I'm training in Data Science and Big Data, with a focus on applied AI, behavioral analysis and human-centered technology. My goal is not a tool. My goal is impact.",
+      pillar1_title: "Intellectual curiosity", pillar1_desc: "I look for patterns, rules and explanations in everything around me. That tendency now expresses itself through Data Science and AI.",
+      pillar2_title: "Self-directed learning", pillar2_desc: "I design my own study programs. I use AI as a learning tool and learn through real projects.",
+      pillar3_title: "Technology with purpose", pillar3_desc: "Technology is not the goal. It's the tool to understand, solve problems and generate a positive impact on people.",
+      pillar4_title: "Pattern recognition", pillar4_desc: "I'm interested in understanding why things happen, what data explains a behavior and how AI can help people learn better.",
+      projects_title: "Featured Projects",
+      proj_why: "Motivation", proj_what: "Goal", proj_view: "View live project",
+      dulce_why: "Learn by building something real with its own visual identity.",
+      dulce_what: "Full e-commerce for an artisan pastry shop with catalog, cart and contact system.",
+      arena_why: "Explore how data can anticipate behaviors and future scenarios.",
+      arena_what: "Prediction dashboard using Poisson model, real Copa Libertadores 2026 data, match simulations and interactive bracket with AI confidence.",
+      edu_why: "Bring technology and AI closer to more people, regardless of their background or context.",
+      edu_what: "Platform that adapts digital tools and AI to the user's profession and real life, focused on accessibility and contextual learning.",
+      beauty_why: "Transform scattered information into accessible learning for those who need it.",
+      beauty_what: "Makeup and skincare platform with step-by-step guides, techniques and levels for all types of people.",
+      skills_title: "Skills", skills_data: "Data & AI", skills_fullstack: "Full Stack", skills_soft: "Soft Skills",
+      s1:"Intellectual curiosity",s2:"Self-directed learning",s3:"Analytical thinking",s4:"Problem solving",s5:"Creativity",s6:"Communication",s7:"Adaptability",
+      education_title: "Education & Certifications",
+      edu1_name:"Data Science & Data Analysis",edu1_where:"Training in progress",edu1_badge:"In progress",
+      edu2_name:"Big Data Diploma",edu2_where:"Coming soon",edu2_badge:"Planned",
+      edu3_name:"Hotel Management",edu4_name:"Secondary Education Complete",
+      cert1:"Introduction to Data Science",cert2:"Introduction to Python",cert3:"Introduction to Databases",cert4:"Data Analysis Lab",
+      lang_title:"Languages",lang_es:"Spanish",lang_en:"English",lang_it:"Italian",lang_pt:"Portuguese",lang_native:"Native",lang_basic:"Basic",
+      contact_title:"Contact",contact_portfolio:"Portfolio",
+      footer_quote:'"Technology makes sense when it improves people\'s lives."'
+    }
+  };
+
+  let currentLang = 'es';
+
+  function toggleLang() {
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    document.getElementById('langBtn').textContent = currentLang === 'es' ? 'EN' : 'ES';
+    document.documentElement.lang = currentLang;
+    const t = translations[currentLang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+  }
 </script>
 </body>
 </html>
