@@ -529,19 +529,59 @@
       <h2 class="section-title" data-i18n="contact_title">Contacto</h2>
       <div class="section-line"></div>
     </div>
-    <div class="contact-grid reveal">
-      <a class="contact-card" href="mailto:celenagomez.1712@gmail.com">
-        <div class="contact-icon">✉</div>
-        <div><div class="contact-label">Email</div><div class="contact-value">celenagomez.1712@gmail.com</div></div>
-      </a>
-      <a class="contact-card" href="https://www.linkedin.com/in/celena-gomez-535a353b3/" target="_blank">
-        <div class="contact-icon">in</div>
-        <div><div class="contact-label">LinkedIn</div><div class="contact-value">Celena Gómez</div></div>
-      </a>
-      <a class="contact-card" href="https://github.com/gomezcelena21" target="_blank">
-        <div class="contact-icon">⌥</div>
-        <div><div class="contact-label">GitHub</div><div class="contact-value">gomezcelena21</div></div>
-      </a>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;" class="reveal">
+
+      <div>
+        <p style="font-family:var(--display);font-style:italic;font-size:1.5rem;font-weight:300;color:var(--lila);margin-bottom:1rem;line-height:1.4;" data-i18n="contact_phrase">¿Tenés un proyecto en mente o querés conectar?</p>
+        <p style="font-size:0.9rem;line-height:1.8;color:rgba(245,240,255,0.65);margin-bottom:2rem;" data-i18n="contact_desc">Estoy abierta a colaboraciones, oportunidades y conversaciones sobre tecnología, datos e IA. Escribime y con gusto respondo.</p>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <a class="contact-card" href="mailto:celenagomez.1712@gmail.com">
+            <div class="contact-icon">✉</div>
+            <div><div class="contact-label">Email</div><div class="contact-value">celenagomez.1712@gmail.com</div></div>
+          </a>
+          <a class="contact-card" href="https://www.linkedin.com/in/celena-gomez-535a353b3/" target="_blank">
+            <div class="contact-icon">in</div>
+            <div><div class="contact-label">LinkedIn</div><div class="contact-value">Celena Gómez</div></div>
+          </a>
+          <a class="contact-card" href="https://github.com/gomezcelena21" target="_blank">
+            <div class="contact-icon">⌥</div>
+            <div><div class="contact-label">GitHub</div><div class="contact-value">gomezcelena21</div></div>
+          </a>
+        </div>
+      </div>
+
+      <form action="https://formspree.io/f/mrednpdl" method="POST" id="contactForm">
+        <div style="display:flex;flex-direction:column;gap:1.25rem;">
+          <div>
+            <label style="font-size:0.65rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--violet);display:block;margin-bottom:0.5rem;" data-i18n="form_name">Nombre</label>
+            <input type="text" name="nombre" required data-i18n-placeholder="form_name_ph" placeholder="Tu nombre"
+              style="width:100%;padding:0.85rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;color:var(--white);font-family:var(--body);font-size:0.88rem;outline:none;transition:border-color 0.25s;"
+              onfocus="this.style.borderColor='rgba(168,85,247,0.5)'" onblur="this.style.borderColor='rgba(168,85,247,0.18)'">
+          </div>
+          <div>
+            <label style="font-size:0.65rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--violet);display:block;margin-bottom:0.5rem;" data-i18n="form_email">Email</label>
+            <input type="email" name="email" required data-i18n-placeholder="form_email_ph" placeholder="tu@email.com"
+              style="width:100%;padding:0.85rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;color:var(--white);font-family:var(--body);font-size:0.88rem;outline:none;transition:border-color 0.25s;"
+              onfocus="this.style.borderColor='rgba(168,85,247,0.5)'" onblur="this.style.borderColor='rgba(168,85,247,0.18)'">
+          </div>
+          <div>
+            <label style="font-size:0.65rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--violet);display:block;margin-bottom:0.5rem;" data-i18n="form_subject">Asunto</label>
+            <input type="text" name="asunto" data-i18n-placeholder="form_subject_ph" placeholder="¿De qué querés hablar?"
+              style="width:100%;padding:0.85rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;color:var(--white);font-family:var(--body);font-size:0.88rem;outline:none;transition:border-color 0.25s;"
+              onfocus="this.style.borderColor='rgba(168,85,247,0.5)'" onblur="this.style.borderColor='rgba(168,85,247,0.18)'">
+          </div>
+          <div>
+            <label style="font-size:0.65rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--violet);display:block;margin-bottom:0.5rem;" data-i18n="form_message">Mensaje</label>
+            <textarea name="mensaje" rows="5" required data-i18n-placeholder="form_message_ph" placeholder="Contame tu idea o proyecto..."
+              style="width:100%;padding:0.85rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;color:var(--white);font-family:var(--body);font-size:0.88rem;outline:none;transition:border-color 0.25s;resize:vertical;"
+              onfocus="this.style.borderColor='rgba(168,85,247,0.5)'" onblur="this.style.borderColor='rgba(168,85,247,0.18)'"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" data-i18n="form_send">✉ Enviar mensaje</button>
+          <p id="formMsg" style="display:none;font-size:0.82rem;text-align:center;color:var(--lila);padding:0.75rem;border:1px solid var(--border);border-radius:4px;"></p>
+        </div>
+      </form>
+
     </div>
   </div>
 </section>
@@ -570,6 +610,39 @@
       document.getElementById('hamburger').classList.remove('open');
     });
   });
+
+  // Form submission
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const msg = document.getElementById('formMsg');
+      btn.disabled = true;
+      btn.textContent = '...';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        const t = translations[currentLang];
+        if (res.ok) {
+          msg.textContent = t.form_success;
+          msg.style.display = 'block';
+          form.reset();
+        } else {
+          msg.textContent = t.form_error;
+          msg.style.display = 'block';
+        }
+      } catch {
+        document.getElementById('formMsg').textContent = translations[currentLang].form_error;
+        document.getElementById('formMsg').style.display = 'block';
+      }
+      btn.disabled = false;
+      btn.textContent = translations[currentLang].form_send;
+    });
+  }
 
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
@@ -619,6 +692,15 @@
       cert1:"Introducción a Ciencia de Datos",cert2:"Introducción a Python",cert3:"Introducción a Bases de Datos",cert4:"Data Analysis Lab",
       lang_title:"Idiomas",lang_es:"Español",lang_en:"Inglés",lang_it:"Italiano",lang_pt:"Portugués",lang_native:"Nativo",lang_basic:"Básico",
       contact_title:"Contacto",contact_portfolio:"Portfolio",
+      contact_phrase:"¿Tenés un proyecto en mente o querés conectar?",
+      contact_desc:"Estoy abierta a colaboraciones, oportunidades y conversaciones sobre tecnología, datos e IA. Escribime y con gusto respondo.",
+      form_name:"Nombre",form_name_ph:"Tu nombre",
+      form_email:"Email",form_email_ph:"tu@email.com",
+      form_subject:"Asunto",form_subject_ph:"¿De qué querés hablar?",
+      form_message:"Mensaje",form_message_ph:"Contame tu idea o proyecto...",
+      form_send:"✉ Enviar mensaje",
+      form_success:"¡Mensaje enviado! Te respondo a la brevedad.",
+      form_error:"Algo salió mal. Intentá de nuevo o escribime directo al email.",
       footer_quote:'"La tecnología tiene sentido cuando mejora la vida de las personas."'
     },
     en: {
@@ -655,6 +737,15 @@
       cert1:"Introduction to Data Science",cert2:"Introduction to Python",cert3:"Introduction to Databases",cert4:"Data Analysis Lab",
       lang_title:"Languages",lang_es:"Spanish",lang_en:"English",lang_it:"Italian",lang_pt:"Portuguese",lang_native:"Native",lang_basic:"Basic",
       contact_title:"Contact",contact_portfolio:"Portfolio",
+      contact_phrase:"Have a project in mind or want to connect?",
+      contact_desc:"I'm open to collaborations, opportunities and conversations about technology, data and AI. Write to me and I'll be happy to respond.",
+      form_name:"Name",form_name_ph:"Your name",
+      form_email:"Email",form_email_ph:"your@email.com",
+      form_subject:"Subject",form_subject_ph:"What would you like to talk about?",
+      form_message:"Message",form_message_ph:"Tell me about your idea or project...",
+      form_send:"✉ Send message",
+      form_success:"Message sent! I'll get back to you shortly.",
+      form_error:"Something went wrong. Please try again or email me directly.",
       footer_quote:'"Technology makes sense when it improves people\'s lives."'
     }
   };
@@ -669,6 +760,10 @@
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (t[key] !== undefined) el.placeholder = t[key];
     });
   }
 </script>
